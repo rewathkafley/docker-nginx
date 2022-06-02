@@ -1,0 +1,1 @@
+docker build --build-arg ENABLED_MODULES="brotli" -t ghcr.io/selisebt/nginx:latest -f Dockerfile.alpine .
