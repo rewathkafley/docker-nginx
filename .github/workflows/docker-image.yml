@@ -31,7 +31,8 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: ./modules
-        build-args: ENABLED_MODULES="brotli"
+        build-args: |
+          ENABLED_MODULES=brotli
         file: ./modules/Dockerfile.alpine
         builder: ${{ steps.buildx.outputs.name }}
         push: true
