@@ -11,4 +11,4 @@ The changelog for NGINX releases is available at [nginx.org changes page](https:
 
 
 # Customization
-Customizations are of our own for specfic requirements to Selise Bhutan.
+Customizations are of our own for specific requirements to Selise Bhutan.
