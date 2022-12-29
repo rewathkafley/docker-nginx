@@ -3,7 +3,7 @@ set -eu
 
 declare -A aliases
 aliases=(
-	[mainline]='1 1.21 latest'
+	[mainline]='1 1.23 latest'
 	[stable]='1.22'
 )
 
@@ -84,6 +84,21 @@ for version in "${versions[@]}"; do
 	done
 
 	for variant in alpine alpine-perl; do
+		commit="$(dirCommit "$version/$variant")"
+
+		variantAliases=( "${versionAliases[@]/%/-$variant}" )
+		variantAliases=( "${variantAliases[@]//latest-/}" )
+
+		echo
+		cat <<-EOE
+			Tags: $(join ', ' "${variantAliases[@]}")
+			Architectures: arm64v8, arm32v6, arm32v7, ppc64le, s390x, i386, amd64
+			GitCommit: $commit
+			Directory: $version/$variant
+		EOE
+	done
+
+	for variant in alpine-slim; do
 		commit="$(dirCommit "$version/$variant")"
 
 		variantAliases=( "${versionAliases[@]/%/-$variant}" )
